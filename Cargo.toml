@@ -1,0 +1,44 @@
+[package]
+
+resolver = "2"
+name = "cw20-och-token"
+version = "0.1.0"
+authors = ["Orchai Protocol"]
+edition = "2021"
+
+exclude = [
+    # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
+    "contract.wasm",
+    "hash.txt",
+]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.release]
+opt-level = 3
+debug = false
+debug-assertions = false
+codegen-units = 1
+incremental = false
+rpath = false
+lto = true
+overflow-checks = true
+panic = "abort"
+
+[features]
+# for more explicit tests, cargo test --features=backtraces
+backtraces = ["cosmwasm-std/backtraces"]
+# use library feature to disable all instantiate/execute/query exports
+library = []
+
+[dependencies]
+cosmwasm-schema = { version = "1.4.0" }
+cosmwasm-std = { version = "1.4.0" }
+cosmwasm-storage = "1.1.9"
+schemars = "0.8.15"
+thiserror = { version = "1.0.49" }
+cw20-base = { version = "1.1.2", features = ["library"] }
+cw20 = { version = "1.1.2" }
