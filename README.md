@@ -1,4 +1,8 @@
+
+
+
 # OCH Token
+- Contract address: orai1hn8w33cqvysun2aujk5sv33tku4pgcxhhnsxmvnkfvdxagcx0p8qa4l98q
 
 This is a basic implementation of a cw20 contract. It implements
 the [CW20 spec](../../packages/cw20/README.md) and is designed to
